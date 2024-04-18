@@ -12,6 +12,7 @@ public class Participant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "participant_id")
     private Long id;
 
     private String fullName;
