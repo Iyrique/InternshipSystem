@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+spring:
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/InternshipDS
+    username: postgres
+
+
+  jpa:
+
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
