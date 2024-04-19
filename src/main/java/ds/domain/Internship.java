@@ -18,14 +18,5 @@ public class Internship {
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalDate endDateRecording;
-    private Statuses status;
-
-    private enum Statuses {
-        STARTED ("Started"),
-        ACTIVE ("Active"),
-        ENDED ("Ended");
-
-        Statuses(String value) {
-        }
-    }
+    private String status;
 }
