@@ -22,4 +22,6 @@ public class Message {
     private Task task;
 
     private String message;
+
+    private String status;
 }
