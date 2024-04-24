@@ -13,4 +13,6 @@ public interface InternshipService {
     Internship createInternship(Internship internship);
 
     Internship updateInternship(Long id, Internship internship);
+
+    List<Internship> getInternshipsByStatus(String status);
 }

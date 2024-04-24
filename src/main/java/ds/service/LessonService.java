@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface LessonService {
 
-    void saveLesson(Lesson lesson);
+    Lesson saveLesson(Lesson lesson);
 
-    void updateLesson(Long id, Lesson lesson);
+    Lesson updateLesson(Long id, Lesson lesson);
 
     void deleteLesson(Long id);
 

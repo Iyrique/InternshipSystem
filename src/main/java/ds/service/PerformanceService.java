@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface PerformanceService {
 
-    void savePerformance(Performance performance);
+    Performance savePerformance(Performance performance);
 
-    void updatePerformance(Long id, Performance performance);
+    Performance updatePerformance(Long id, Performance performance);
 
     void deletePerformance(Long id);
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface MessageService {
 
-    void saveMessage();
+    Message saveMessage(Message message);
 
     List<Message> getMessagesByParticipant(Participant participant);
 

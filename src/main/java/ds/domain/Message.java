@@ -23,5 +23,5 @@ public class Message {
 
     private String message;
 
-    private String status;
+    private boolean read;
 }

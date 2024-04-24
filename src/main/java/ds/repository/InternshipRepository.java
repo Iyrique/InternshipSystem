@@ -9,7 +9,8 @@ import java.util.List;
 @Repository
 public interface InternshipRepository extends JpaRepository<Internship, Long> {
 
-    List<Internship> findByStatus(String status);
+    List<Internship> getAllByStatus(String status);
+
 
     List<Internship> findAll();
 

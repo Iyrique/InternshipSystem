@@ -10,9 +10,9 @@ public interface ParticipantService {
 
     Participant updateParticipant(Participant participant);
 
-    void deleteParticipant(Participant participant);
+    void deleteParticipant(Long participantId);
 
     List<Participant> getAllParticipants();
 
-    List<Participant> findParticipantsByName(String name);
+    Participant findParticipantByName(String name);
 }
