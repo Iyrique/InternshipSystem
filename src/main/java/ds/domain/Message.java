@@ -1,12 +1,18 @@
 package ds.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "messages")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Message {
 
     @Id

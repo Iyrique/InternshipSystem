@@ -1,13 +1,19 @@
 package ds.domain;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "performances")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Performance {
 
     @Id

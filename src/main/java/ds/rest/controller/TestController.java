@@ -1,4 +1,4 @@
-package ds.controller;
+package ds.rest.controller;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.tags.Tag;

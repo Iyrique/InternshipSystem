@@ -1,6 +1,9 @@
 package ds.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -8,6 +11,9 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "participants")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Participant {
 
     @Id

@@ -1,4 +1,4 @@
-package ds.controller;
+package ds.rest.controller;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;

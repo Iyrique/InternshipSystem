@@ -1,6 +1,9 @@
 package ds.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -8,6 +11,9 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "lessons")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Lesson {
 
     @Id
