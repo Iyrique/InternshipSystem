@@ -25,5 +25,6 @@ public class Internship {
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalDate endDateRecording;
+
     private String status;
 }
