@@ -11,7 +11,7 @@ public interface InternshipRepository extends JpaRepository<Internship, Long> {
 
     Internship getById(Long id);
 
-    List<Internship> getAllByStatus(String status);
+    List<Internship> findAllByStatus(String status);
 
     List<Internship> findAll();
 

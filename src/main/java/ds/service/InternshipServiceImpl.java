@@ -48,6 +48,6 @@ public class InternshipServiceImpl implements InternshipService{
 
     @Override
     public List<Internship> getInternshipsByStatus(String status) {
-        return internshipRepository.getAllByStatus(status);
+        return internshipRepository.findAllByStatus(status);
     }
 }
