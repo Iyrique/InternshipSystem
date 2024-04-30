@@ -44,7 +44,6 @@ CREATE TABLE IF NOT EXISTS public.messages
     message character varying(255) COLLATE pg_catalog."default",
     participant_id bigint,
     task_id bigint,
-    status character varying(255) COLLATE pg_catalog."default",
     read boolean NOT NULL,
     CONSTRAINT messages_pkey PRIMARY KEY (id),
     CONSTRAINT fk1fe2brsvkicrj653duknqxf7h FOREIGN KEY (task_id)
