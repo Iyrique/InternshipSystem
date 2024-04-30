@@ -1,7 +1,6 @@
 package ds.repository;
 
 import ds.domain.Internship;
-import ds.rest.dto.InternshipDto;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -66,13 +65,9 @@ public class InternshipRepositoryTest {
 
     @Test
     public void testGetAllByStatus() {
-
         List<Internship> internshipsWithActiveStatus = Arrays.asList(internship);
-
         when(internshipRepository.findAllByStatus("ACTIVE")).thenReturn(internshipsWithActiveStatus);
         List<Internship> result = internshipRepository.findAllByStatus("ACTIVE");
-
-        // Assertions
         assertEquals(1, result.size());
         assertEquals(internship, result.get(0));
     }

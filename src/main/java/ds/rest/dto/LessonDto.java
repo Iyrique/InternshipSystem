@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -19,7 +19,7 @@ public class LessonDto {
 
     private String name;
     private String description;
-    private LocalDateTime dateTime;
+    private LocalDate dateTime;
     private String status;
     private Internship internship;
 

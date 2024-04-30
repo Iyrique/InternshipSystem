@@ -53,6 +53,6 @@ public class LessonServiceImpl implements LessonService{
 
     @Override
     public List<Lesson> getLessonsByDateRange(LocalDate startDate, LocalDate endDate) {
-        return lessonRepository.findAllByDateTimeBetween(startDate.atStartOfDay(), endDate.atTime(LocalTime.MAX));
+        return lessonRepository.findAllByDateTimeBetween(startDate, endDate);
     }
 }
