@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MessageServiceImpl implements MessageService{
+public class MessageServiceImpl implements MessageService {
 
     private final MessageRepository messageRepository;
 
@@ -33,11 +33,11 @@ public class MessageServiceImpl implements MessageService{
 
     @Override
     @Transactional
-    public Message markMessageAsRead(Long messageId) {
-        Message message = messageRepository.getById(messageId);
-        if (message != null) {
-            message.setRead(true);
-            return messageRepository.save(message);
+    public Message markMessageAsRead(Long id) {
+        Message exMessage = messageRepository.getById(id);
+        if (exMessage != null) {
+            exMessage.setRead(true);
+            return messageRepository.save(exMessage);
         }
         return null;
     }

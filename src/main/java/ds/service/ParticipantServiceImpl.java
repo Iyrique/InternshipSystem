@@ -22,8 +22,8 @@ public class ParticipantServiceImpl implements ParticipantService{
 
     @Override
     @Transactional
-    public Participant updateParticipant(Participant participant) {
-        Participant existingParticipant = participantRepository.getById(participant.getId());
+    public Participant updateParticipant(Long id, Participant participant) {
+        Participant existingParticipant = participantRepository.getById(id);
         if (existingParticipant != null) {
             existingParticipant.setFullName(participant.getFullName());
             existingParticipant.setEmail(participant.getEmail());

@@ -13,7 +13,7 @@ public interface MessageService {
 
     List<Message> getUnreadMessagesByParticipant(Participant participant);
 
-    Message markMessageAsRead(Long messageId);
+    Message markMessageAsRead(Long id);
 
     void deleteMessage(Long messageId);
 }

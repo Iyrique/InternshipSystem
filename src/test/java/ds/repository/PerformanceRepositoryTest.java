@@ -62,8 +62,6 @@ public class PerformanceRepositoryTest {
                                 .build())
                         .build())
                 .build();
-
-
     }
 
     @Test
