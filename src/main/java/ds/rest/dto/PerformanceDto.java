@@ -3,6 +3,7 @@ package ds.rest.dto;
 import ds.domain.Participant;
 import ds.domain.Performance;
 import ds.domain.Task;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,13 +13,22 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "Сущность успеваемости")
 public class PerformanceDto {
 
+    @Schema(description = "Идентификатор", example = "1")
     private Long id;
+
+    @Schema(description = "Сущность ученика", example = "{'id':'1',..., 'course':'1'}")
     private Participant participant;
+
+    @Schema(description = "Сущность задачи", example = "{'id':'1',..., 'internship':{...}}")
     private Task task;
 
+    @Schema(description = "Статус", example = "Pass")
     private String status;
+
+    @Schema(description = "Комментарий", example = "Принято")
     private String comment;
 
     public static Performance toDomainObject(PerformanceDto performanceDto) {
