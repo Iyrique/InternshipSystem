@@ -10,17 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
+@PreAuthorize("hasRole('USER')")
 @Tag(name = "User-controller", description = "Пользовательское")
 public class UserController {
 
     @GetMapping("/data")
-    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> getUserData(Authentication authentication) {
         return ResponseEntity.ok("User data");
     }
 
     @GetMapping("/settings")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<String> getUserSettings(Authentication authentication) {
         return ResponseEntity.ok("User settings");
     }

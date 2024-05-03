@@ -10,21 +10,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/user/**").hasRole("USER")
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .permitAll();
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/swagger-ui/**").hasRole("ROOT")
+                .antMatchers("/public/**").hasAnyRole("ADMIN", "USER", "ROOT")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN", "ROOT")
+                .antMatchers("/user/**").hasAnyRole("USER", "ROOT")
+                .and()
+                .formLogin();
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -32,6 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .withUser("user").password("{noop}password").roles("USER")
                 .and()
-                .withUser("admin").password("{noop}admin").roles("ADMIN");
+                .withUser("admin").password("{noop}admin").roles("ADMIN")
+                .and()
+                .withUser("root").password("{noop}root").roles("ROOT");
     }
 }

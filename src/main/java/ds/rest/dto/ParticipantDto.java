@@ -34,7 +34,7 @@ public class ParticipantDto {
     @Schema(description = "Telegram", example = "@voronezhskij_n_m")
     private String telegramId;
 
-    @Schema(description = "Допольнительная информация", example = "Аллергия на манго")
+    @Schema(description = "Дополнительная информация", example = "Аллергия на манго")
     private String about;
 
     @Schema(description = "Дата рождения", example = "01.01.01")
@@ -43,7 +43,7 @@ public class ParticipantDto {
     @Schema(description = "Город", example = "Воронеж")
     private String city;
 
-    @Schema(description = "Статус обучения", example = "Студент")
+    @Schema(description = "Статус обучения", example = "Проходит стажировку")
     private String educationStatus;
 
     @Schema(description = "Университет", example = "Воронежский государственный университет")
