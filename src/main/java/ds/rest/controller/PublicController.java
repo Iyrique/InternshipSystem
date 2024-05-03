@@ -23,6 +23,11 @@ import java.util.stream.Collectors;
 @Tag(name = "Public controller", description = "Публичный контроллер. Информация, доступная каждому")
 public class PublicController {
 
+    /*
+    Добавить:
+    1.
+     */
+
     @Autowired
     private InternshipServiceImpl internshipService;
 

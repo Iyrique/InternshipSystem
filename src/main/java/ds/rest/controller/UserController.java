@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "User-controller", description = "Пользовательское")
 public class UserController {
 
+    /*
+    Добавить:
+    1. Возможность просмотра ведомости
+    2. Получение сообщения
+     */
+
     @GetMapping("/data")
     public ResponseEntity<String> getUserData(Authentication authentication) {
         return ResponseEntity.ok("User data");
