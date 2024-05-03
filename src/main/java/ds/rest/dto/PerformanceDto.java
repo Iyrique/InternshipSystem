@@ -31,13 +31,16 @@ public class PerformanceDto {
     @Schema(description = "Комментарий", example = "Принято")
     private String comment;
 
+    @Schema(description = "Просмотрено ли админом?", example = "true")
+    private boolean checked;
+
     public static Performance toDomainObject(PerformanceDto performanceDto) {
         return new Performance(performanceDto.getId(), performanceDto.getParticipant(), performanceDto.getTask(),
-                performanceDto.getStatus(), performanceDto.getComment());
+                performanceDto.getStatus(), performanceDto.getComment(), performanceDto.isChecked());
     }
 
     public static PerformanceDto toDto(Performance performance) {
         return new PerformanceDto(performance.getId(), performance.getParticipant(), performance.getTask(),
-                performance.getStatus(), performance.getComment());
+                performance.getStatus(), performance.getComment(), performance.isChecked());
     }
 }
