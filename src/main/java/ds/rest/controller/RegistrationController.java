@@ -1,5 +1,12 @@
 package ds.rest.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/register")
+@Tag(name = "Register-controller", description = "Контроллер регистрации")
 public class RegistrationController {
 
     /**
@@ -13,4 +20,6 @@ public class RegistrationController {
      * на стажировки компании, но в конкретную стажировку только один раз. При записи необходимо проверять
      * не проходил ли данный человек стажировку ранее и если проходил, то обновлять информацию.
      */
+
+
 }

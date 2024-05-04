@@ -43,7 +43,7 @@ public class ParticipantDto {
     @Schema(description = "Город", example = "Воронеж")
     private String city;
 
-    @Schema(description = "Статус обучения", example = "Проходит стажировку")
+    @Schema(description = "Статус обучения", example = "Студент")
     private String educationStatus;
 
     @Schema(description = "Университет", example = "Воронежский государственный университет")

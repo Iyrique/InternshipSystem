@@ -14,6 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/register").permitAll()
                 .antMatchers("/swagger-ui/**").hasRole("ROOT")
                 .antMatchers("/public/**").hasAnyRole("ADMIN", "USER", "ROOT")
                 .antMatchers("/admin/**").hasAnyRole("ADMIN", "ROOT")
