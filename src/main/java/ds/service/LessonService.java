@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface LessonService {
 
+    Lesson getLessonById(Long id);
+
     Lesson saveLesson(Lesson lesson);
 
     Lesson updateLesson(Long id, Lesson lesson);

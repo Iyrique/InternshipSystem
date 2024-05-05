@@ -16,4 +16,6 @@ public interface ParticipantInternshipRepository extends JpaRepository<Participa
     List<ParticipantInternship> findByInternship(Internship internship);
 
     ParticipantInternship getByParticipantAndInternship(Participant participant, Internship internship);
+
+    List<ParticipantInternship> findByStatusAndInternship(String status, Internship internship);
 }

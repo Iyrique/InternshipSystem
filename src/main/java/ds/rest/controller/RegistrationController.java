@@ -23,6 +23,8 @@ import java.util.ArrayList;
 @Tag(name = "Register-controller", description = "Контроллер регистрации")
 public class RegistrationController {
 
+    public static final String ENROLL_STATUS = "Enrolled";
+
     private InternshipServiceImpl internshipService;
 
     private ParticipantServiceImpl participantService;
@@ -40,7 +42,7 @@ public class RegistrationController {
             @RequestBody @Parameter(description = "Учащийся и его данные") ParticipantDto participantDto) {
 
         Internship internship = internshipService.getInternshipById(internshipId);
-        if (internship != null) {
+        if (internship == null) {
             return ResponseEntity.badRequest().body("Стажировка не найдена с id: " + internshipId);
         }
         LocalDate currentDate = LocalDate.now();
@@ -84,7 +86,7 @@ public class RegistrationController {
             participantInternship = new ParticipantInternship();
             participantInternship.setParticipant(participant);
             participantInternship.setInternship(internship);
-            participantInternship.setStatus("Enrolled");
+            participantInternship.setStatus(ENROLL_STATUS);
             participantInternship = participantInternshipService.save(participantInternship);
             User user = createUser(participant);
             return ResponseEntity.ok("Успешно! Зарегистрирован пользователь: " + user.getUsername() + ":" + user.getPassword());

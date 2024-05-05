@@ -16,6 +16,11 @@ public class LessonServiceImpl implements LessonService{
     private final LessonRepository lessonRepository;
 
     @Override
+    public Lesson getLessonById(Long id) {
+        return lessonRepository.getById(id);
+    }
+
+    @Override
     @Transactional
     public Lesson saveLesson(Lesson lesson) {
         return lessonRepository.save(lesson);
@@ -54,4 +59,6 @@ public class LessonServiceImpl implements LessonService{
     public List<Lesson> getLessonsByDateRange(LocalDate startDate, LocalDate endDate) {
         return lessonRepository.findAllByDateTimeBetween(startDate, endDate);
     }
+
+
 }

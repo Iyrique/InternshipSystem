@@ -58,4 +58,9 @@ public class ParticipantInternshipServiceImpl implements ParticipantInternshipSe
         return participantInternshipRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("ParticipantInternship not found with id: " + id));
     }
+
+    @Override
+    public List<ParticipantInternship> findByStatusAndInternship(String status, Internship internship) {
+        return participantInternshipRepository.findByStatusAndInternship(status, internship);
+    }
 }

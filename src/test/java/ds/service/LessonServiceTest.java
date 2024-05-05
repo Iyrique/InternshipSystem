@@ -50,6 +50,13 @@ public class LessonServiceTest {
     }
 
     @Test
+    public void testGetById() {
+        when(lessonRepository.getById(2L)).thenReturn(lesson);
+        Lesson result = lessonRepository.getById(2L);
+        assertEquals(lesson, result);
+    }
+
+    @Test
     public void testSaveLesson() {
         when(lessonRepository.save(lesson)).thenReturn(lesson);
         Lesson result = lessonService.saveLesson(lesson);

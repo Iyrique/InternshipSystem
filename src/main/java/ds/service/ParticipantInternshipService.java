@@ -21,4 +21,6 @@ public interface ParticipantInternshipService {
     ParticipantInternship updateStatus(Long id, String newStatus);
 
     ParticipantInternship getById(Long id);
+
+    List<ParticipantInternship> findByStatusAndInternship(String status, Internship internship);
 }
