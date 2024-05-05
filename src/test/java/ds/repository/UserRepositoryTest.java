@@ -76,6 +76,7 @@ public class UserRepositoryTest {
         user = User.builder()
                 .id(1L)
                 .username("voronezhskiy.nikita")
+                .password("password")
                 .role("ADMIN")
                 .message(Arrays.asList(message1, message2))
                 .build();
@@ -106,8 +107,8 @@ public class UserRepositoryTest {
     @Test
     public void testFindAllByStatus() {
         String role = "ROLE_USER";
-        User user1 = new User(1L, "user1", new ArrayList<>(),role);
-        User user2 = new User(2L, "user2", new ArrayList<>(),role);
+        User user1 = new User(1L, "user1", "password", new ArrayList<>(),role);
+        User user2 = new User(2L, "user2", "password", new ArrayList<>(),role);
         List<User> userList = Arrays.asList(user1, user2);
         when(userRepository.findAllByRole(role)).thenReturn(userList);
         List<User> result = userRepository.findAllByRole(role);

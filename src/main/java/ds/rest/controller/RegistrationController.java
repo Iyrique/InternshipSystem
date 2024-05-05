@@ -3,16 +3,20 @@ package ds.rest.controller;
 import ds.domain.Internship;
 import ds.domain.Participant;
 import ds.domain.ParticipantInternship;
+import ds.domain.User;
 import ds.rest.dto.ParticipantDto;
 import ds.service.InternshipServiceImpl;
 import ds.service.ParticipantInternshipService;
 import ds.service.ParticipantServiceImpl;
+import ds.service.UserServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/register")
@@ -25,7 +29,10 @@ public class RegistrationController {
 
     private ParticipantInternshipService participantInternshipService;
 
+    private UserServiceImpl userService;
+
     @PostMapping("/{internshipId}")
+    @Operation(summary = "Регистрация на стажировку", description = "Позволяет зарегистрироваться на конкретную стажировку")
     public ResponseEntity<String> registerParticipantForInternship(
             @PathVariable("internshipId")
             @Parameter(description = "Идентификатор стажировки")
@@ -43,7 +50,7 @@ public class RegistrationController {
 
         Participant participant = participantChecker(participantDto);
 
-        return checkerEnrollingInternship(participant, internship);
+        return enrollInternship(participant, internship);
     }
 
     private Participant participantChecker(ParticipantDto participantDto) {
@@ -71,7 +78,7 @@ public class RegistrationController {
         return participant;
     }
 
-    private ResponseEntity<String> checkerEnrollingInternship(Participant participant, Internship internship) {
+    private ResponseEntity<String> enrollInternship(Participant participant, Internship internship) {
         ParticipantInternship participantInternship = participantInternshipService.getByParticipantAndInternship(participant, internship);
         if (participantInternship == null) {
             participantInternship = new ParticipantInternship();
@@ -79,10 +86,21 @@ public class RegistrationController {
             participantInternship.setInternship(internship);
             participantInternship.setStatus("Enrolled");
             participantInternship = participantInternshipService.save(participantInternship);
-            return ResponseEntity.ok("Успешно!");
+            User user = createUser(participant);
+            return ResponseEntity.ok("Успешно! Зарегистрирован пользователь: " + user.getUsername() + ":" + user.getPassword());
         } else {
             return ResponseEntity.ok("Вы уже записаны на эту стажировку!");
         }
+    }
+
+    private User createUser(Participant participant) {
+        User user = User.builder()
+                .username(participant.getUsername())
+                .password("password")
+                .role("USER")
+                .message(new ArrayList<>())
+                .build();
+        return userService.createUser(user);
     }
 
 }

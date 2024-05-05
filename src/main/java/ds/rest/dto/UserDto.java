@@ -23,6 +23,9 @@ public class UserDto {
     @Schema(description = "Имя пользователя", example = "voronezhskiy.nikita")
     private String username;
 
+    @Schema(description = "Пароль пользователя", example = "password")
+    private String password;
+
     @Schema(description = "Список сообщений", example = "[]")
     private List<Message> message;
 
@@ -30,10 +33,10 @@ public class UserDto {
     private String role;
 
     public static User toDomainObject(UserDto userDto) {
-        return new User(userDto.getId(), userDto.getUsername(), userDto.getMessage(), userDto.getRole());
+        return new User(userDto.getId(), userDto.getUsername(), userDto.getPassword(), userDto.getMessage(), userDto.getRole());
     }
 
     public static UserDto toDto(User user) {
-        return new UserDto(user.getId(), user.getUsername(), user.getMessage(), user.getRole());
+        return new UserDto(user.getId(), user.getUsername(), user.getPassword(), user.getMessage(), user.getRole());
     }
 }
