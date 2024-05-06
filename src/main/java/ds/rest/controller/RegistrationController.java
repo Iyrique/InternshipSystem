@@ -12,6 +12,7 @@ import ds.service.UserServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,17 +22,18 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/register")
 @Tag(name = "Register-controller", description = "Контроллер регистрации")
+@RequiredArgsConstructor
 public class RegistrationController {
 
     public static final String ENROLL_STATUS = "Enrolled";
 
-    private InternshipServiceImpl internshipService;
+    private final InternshipServiceImpl internshipService;
 
-    private ParticipantServiceImpl participantService;
+    private final ParticipantServiceImpl participantService;
 
-    private ParticipantInternshipService participantInternshipService;
+    private final ParticipantInternshipService participantInternshipService;
 
-    private UserServiceImpl userService;
+    private final UserServiceImpl userService;
 
     @PostMapping("/{internshipId}")
     @Operation(summary = "Регистрация на стажировку", description = "Позволяет зарегистрироваться на конкретную стажировку")

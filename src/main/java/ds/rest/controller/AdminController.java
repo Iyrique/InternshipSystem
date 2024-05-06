@@ -7,9 +7,9 @@ import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +18,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasAnyRole('ADMIN', 'ROOT')")
 @Tag(name = "Admin-controller", description = "Контроллер администратора")
+@RequiredArgsConstructor
 public class AdminController {
 
     /*
@@ -27,14 +28,14 @@ public class AdminController {
     6. Создать ведомость по стажировке, все студенты и задачи, которые опубликованы на момент форм ведомости.
      */
 
-    private InternshipServiceImpl internshipService;
-    private LessonServiceImpl lessonService;
-    private TaskServiceImpl taskService;
-    private UserServiceImpl userService;
-    private ParticipantInternshipServiceImpl participantInternshipService;
-    private PerformanceServiceImpl performanceService;
-    private ParticipantServiceImpl participantService;
-    private MessageServiceImpl messageService;
+    private final InternshipServiceImpl internshipService;
+    private final LessonServiceImpl lessonService;
+    private final TaskServiceImpl taskService;
+    private final UserServiceImpl userService;
+    private final ParticipantInternshipServiceImpl participantInternshipService;
+    private final PerformanceServiceImpl performanceService;
+    private final ParticipantServiceImpl participantService;
+    private final MessageServiceImpl messageService;
 
     @GetMapping("/data")
     @Hidden

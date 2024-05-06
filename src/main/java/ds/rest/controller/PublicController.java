@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +22,10 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/public")
 @Tag(name = "Public controller", description = "Публичный контроллер. Информация, доступная каждому")
+@RequiredArgsConstructor
 public class PublicController {
 
-    @Autowired
-    private InternshipServiceImpl internshipService;
+    private final InternshipServiceImpl internshipService;
 
     @GetMapping("/data")
     @Hidden
