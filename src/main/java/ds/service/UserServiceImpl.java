@@ -64,12 +64,22 @@ public class UserServiceImpl implements UserService {
     public void createAndSendAdminMessage(String text) {
         List<User> users = getUsersByRole("ADMIN");
         for (User user : users) {
-            Message message = new Message();
-            message.setMessage(text);
-            List<Message> messages = user.getMessage();
-            messages.add(message);
-            user.setMessage(messages);
-            updateUser(user.getId(), user);
+            updateUser(user.getId(), addedMessage(user, text));
         }
+    }
+
+    @Transactional
+    public void sendMessageByUsername(String username, String text) {
+        User user = getUserByUsername(username);
+        updateUser(user.getId(), addedMessage(user, text));
+    }
+
+    private User addedMessage(User user, String text) {
+        Message message = new Message();
+        message.setMessage(text);
+        List<Message> messages = user.getMessage();
+        messages.add(message);
+        user.setMessage(messages);
+        return user;
     }
 }

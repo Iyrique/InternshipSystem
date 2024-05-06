@@ -57,4 +57,8 @@ public class ParticipantServiceImpl implements ParticipantService{
     public Participant findParticipantByName(String name) {
         return participantRepository.findByFullName(name);
     }
+
+    public Participant getParticipantById(Long id) {
+        return participantRepository.getById(id);
+    }
 }

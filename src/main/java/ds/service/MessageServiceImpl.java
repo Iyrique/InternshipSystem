@@ -47,4 +47,8 @@ public class MessageServiceImpl implements MessageService {
     public void deleteMessage(Long messageId) {
         messageRepository.deleteById(messageId);
     }
+
+    public Message getMessageById(Long messageId) {
+        return messageRepository.getById(messageId);
+    }
 }

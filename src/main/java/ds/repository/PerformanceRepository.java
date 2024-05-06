@@ -13,4 +13,6 @@ public interface PerformanceRepository extends JpaRepository<Performance, Long>{
     Performance getById(Long id);
 
     List<Performance> findAllByParticipant(Participant participant);
+
+    Performance getByTaskIdAndParticipantId(Long taskId, Long participantId);
 }

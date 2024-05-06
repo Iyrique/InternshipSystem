@@ -43,4 +43,8 @@ public class PerformanceServiceImpl implements PerformanceService{
     public List<Performance> getPerformancesByParticipant(Participant participant) {
         return performanceRepository.findAllByParticipant(participant);
     }
+
+    public Performance getPerformanceByParticipantIdAndTaskId(Long participantId, Long taskId) {
+        return performanceRepository.getByTaskIdAndParticipantId(taskId, participantId);
+    }
 }
