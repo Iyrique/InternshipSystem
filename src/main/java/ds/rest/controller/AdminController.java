@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/admin")
@@ -197,7 +198,7 @@ public class AdminController {
         return ResponseEntity.ok("Задача успешно оценена. Сообщение отправлено пользователю.");
     }
 
-    @GetMapping("/message/{messageId}")
+    @GetMapping("/messages/{messageId}")
     @Operation(summary = "Получение сообщения", description = "Получение сообщения по его идентификатору")
     public ResponseEntity<MessageDto> getMessageById(@PathVariable @Parameter(description = "Идентификатор сообщения") Long messageId) {
         Message message = messageService.getMessageById(messageId);
@@ -206,6 +207,17 @@ public class AdminController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/messages/{username}")
+    @Operation(summary = "Получение сообщений пользователя", description = "Получение сообщения по его идентификатору")
+    public ResponseEntity<List<MessageDto>> getMessageById(@PathVariable @Parameter(description = "Имя пользователя") String username) {
+        User user = userService.getUserByUsername(username);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(user.getMessage().stream().map(MessageDto::toDto).collect(Collectors.toList()));
+
     }
 
 }
