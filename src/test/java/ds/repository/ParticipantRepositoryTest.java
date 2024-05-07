@@ -2,6 +2,7 @@ package ds.repository;
 
 import ds.domain.Participant;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -19,10 +20,10 @@ public class ParticipantRepositoryTest {
     @Mock
     private ParticipantRepository participantRepository;
 
-    private static Participant participant;
+    private Participant participant;
 
-    @BeforeAll
-    public static void prepareTestData() {
+    @BeforeEach
+    public void prepareTestData() {
         participant = Participant.builder()
                 .id(1L)
                 .about("test")

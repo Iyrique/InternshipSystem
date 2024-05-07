@@ -2,6 +2,7 @@ package ds.repository;
 
 import ds.domain.*;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -20,11 +21,11 @@ public class MessageRepositoryTest {
     @Mock
     private MessageRepository messageRepository;
 
-    private static Message message1;
-    private static Message message2;
+    private Message message1;
+    private Message message2;
 
-    @BeforeAll
-    public static void prepareTestData() {
+    @BeforeEach
+    public void prepareTestData() {
         Participant participant = Participant.builder()
                 .id(1L)
                 .about("test")

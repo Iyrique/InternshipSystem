@@ -4,6 +4,7 @@ import ds.domain.Internship;
 import ds.domain.Task;
 import ds.repository.TaskRepository;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,10 +28,10 @@ public class TaskServiceTest {
     @InjectMocks
     private TaskServiceImpl taskService;
 
-    private static Task task;
+    private Task task;
 
-    @BeforeAll
-    public static void prepareTestData() {
+    @BeforeEach
+    public void prepareTestData() {
         task = Task.builder()
                 .id(1L)
                 .gitlabRepository("test")

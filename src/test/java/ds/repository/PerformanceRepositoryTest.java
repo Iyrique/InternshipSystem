@@ -6,6 +6,7 @@ import ds.domain.Participant;
 import ds.domain.Performance;
 import ds.domain.Task;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -24,10 +25,10 @@ public class PerformanceRepositoryTest {
     @Mock
     private PerformanceRepository performanceRepository;
 
-    private static Performance performance;
+    private Performance performance;
 
-    @BeforeAll
-    public static void prepareTestData() {
+    @BeforeEach
+    public void prepareTestData() {
         performance = Performance.builder()
                 .id(1L)
                 .comment("test")

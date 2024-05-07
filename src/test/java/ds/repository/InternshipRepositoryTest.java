@@ -2,6 +2,7 @@ package ds.repository;
 
 import ds.domain.Internship;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -24,10 +25,10 @@ public class InternshipRepositoryTest {
     @Mock
     private InternshipRepository internshipRepository;
 
-    private static Internship internship;
+    private Internship internship;
 
-    @BeforeAll
-    public static void prepareTestData() {
+    @BeforeEach
+    public void prepareTestData() {
         internship = Internship.builder()
                 .id(1L)
                 .description("Test")

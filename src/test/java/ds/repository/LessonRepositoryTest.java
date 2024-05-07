@@ -3,6 +3,7 @@ package ds.repository;
 import ds.domain.Internship;
 import ds.domain.Lesson;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -21,10 +22,10 @@ public class LessonRepositoryTest {
     @Mock
     private LessonRepository lessonRepository;
 
-    private static Lesson lesson;
+    private Lesson lesson;
 
-    @BeforeAll
-    public static void prepareTestData() {
+    @BeforeEach
+    public void prepareTestData() {
         lesson = Lesson.builder()
                 .id(2L)
                 .dateTime(LocalDate.of(2024, 4, 27))

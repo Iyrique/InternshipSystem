@@ -3,6 +3,7 @@ package ds.repository;
 
 import ds.domain.*;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -23,10 +24,10 @@ public class UserRepositoryTest {
     @Mock
     private UserRepository userRepository;
 
-    private static User user;
+    private User user;
 
-    @BeforeAll
-    public static void prepareTestData() {
+    @BeforeEach
+    public void prepareTestData() {
         Participant participant = Participant.builder()
                 .id(1L)
                 .about("test")

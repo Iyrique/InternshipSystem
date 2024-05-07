@@ -4,6 +4,7 @@ package ds.service;
 import ds.domain.Internship;
 import ds.repository.InternshipRepository;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,10 +27,10 @@ public class InternshipServiceTest {
     @InjectMocks
     private InternshipServiceImpl internshipService;
 
-    private static Internship internship;
+    private Internship internship;
 
-    @BeforeAll
-    public static void prepareTestData() {
+    @BeforeEach
+    public void prepareTestData() {
         internship = Internship.builder()
                 .id(1L)
                 .description("Test")
