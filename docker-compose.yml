@@ -3,6 +3,7 @@ version: '3'
 services:
   postgresql:
     image: postgres
+    container_name: db
     restart: always
     volumes:
       - ./data/postgresql:/var/lib/postgresql/data
@@ -23,3 +24,20 @@ services:
       - ./data/pgadmin:/var/lib/pgadmin
     depends_on:
       - postgresql
+
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresql
+    volumes:
+      - ./data/app:/var/lib/postgresql/data
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/InternshipDB
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
