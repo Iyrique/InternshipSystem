@@ -24,11 +24,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AdminController {
 
-    /*
-    Добавить:
-    6. Создать ведомость по стажировке, все студенты и задачи, которые опубликованы на момент форм ведомости.
-     */
-
     private final InternshipServiceImpl internshipService;
     private final LessonServiceImpl lessonService;
     private final TaskServiceImpl taskService;
@@ -218,6 +213,41 @@ public class AdminController {
         }
         return ResponseEntity.ok(user.getMessage().stream().map(MessageDto::toDto).collect(Collectors.toList()));
 
+    }
+
+    @PostMapping("/generate/report/{internshipId}")
+    @Operation(summary = "Генерация ведомости", description = "Создание ведомости по активным участникам стажировки и задачам")
+    public ResponseEntity<String> generateReport(@PathVariable @Parameter(description = "Идентификатор стажировки") Long internshipId) {
+        Internship internship = internshipService.getInternshipById(internshipId);
+        if (internship == null) {
+            return ResponseEntity.badRequest().body("Не удалось найти стажировку с id: " + internshipId);
+        }
+
+        List<ParticipantInternship> participantInternships = participantInternshipService.findByStatusAndInternship("ACTIVE", internship);
+
+        List<Task> tasks = taskService.getTasksByInternship(internship.getId());
+
+        StringBuilder report = new StringBuilder();
+        report.append("Ведомость для стажировки: ").append(internship.getName()).append("\n\n");
+        report.append("Участник\t\t");
+        for (Task task : tasks) {
+            report.append(task.getName()).append("\t\t");
+        }
+        report.append("\n");
+
+        for (ParticipantInternship participantInternship : participantInternships) {
+            report.append(participantInternship.getParticipant().getFullName()).append("\t\t");
+            for (Task task : tasks) {
+                Performance performance = performanceService.getPerformanceByParticipantIdAndTaskId(participantInternship.getParticipant().getId(), task.getId());
+                if (performance != null && performance.getStatus().equals("Pass")) {
+                    report.append("Pass\t\t");
+                } else {
+                    report.append("NoPass\t\t");
+                }
+            }
+            report.append("\n");
+        }
+        return ResponseEntity.ok(report.toString());
     }
 
 }

@@ -26,11 +26,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserController {
 
-    /*
-    Добавить:
-    1. Возможность просмотра ведомости
-     */
-
     private final UserServiceImpl userService;
 
     @GetMapping("/messages/{username}")

@@ -47,4 +47,8 @@ public class TaskServiceImpl implements TaskService{
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
+
+    public List<Task> getTasksByInternship(Long id) {
+        return taskRepository.findAllByInternshipId(id);
+    }
 }
