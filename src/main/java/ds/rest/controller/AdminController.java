@@ -148,7 +148,7 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.CREATED).body(UserDto.toDto(createdUser));
     }
 
-    @PostMapping("/evaluate/task/{internshipId}/{participantId}/{taskId}")
+    @PutMapping("/evaluate/task/{internshipId}/{participantId}/{taskId}")
     @Operation(summary = "Оценка задачи", description = "Оценка задачи и отправка сообщения пользователю")
     public ResponseEntity<String> evaluateTask(
             @PathVariable @Parameter(description = "Идентификатор стажировки") Long internshipId,
